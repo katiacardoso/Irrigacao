@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "663803001393",
+    "firebase_url": "https://horta-fbeeb-default-rtdb.firebaseio.com",
+    "project_id": "horta-fbeeb",
+    "storage_bucket": "horta-fbeeb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:663803001393:android:d73cf8d924357b17feb310",
+        "android_client_info": {
+          "package_name": "com.example.app_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "663803001393-ks6h7v7daolaqg5hd9ha7l87pkg4a0g6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDh1LUTOuVMDCKOqT5cIZQyqaYDq3QAtvg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "663803001393-ks6h7v7daolaqg5hd9ha7l87pkg4a0g6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
