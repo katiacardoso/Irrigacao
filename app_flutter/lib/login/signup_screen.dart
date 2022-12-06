@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../model/user/user_local.dart';
 import '../model/user/user_services.dart';
 import 'validators.dart';
@@ -7,6 +8,7 @@ class SignUpScreen extends StatelessWidget {
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   final UserLocal userLocal = UserLocal();
+  var values = ['Administrador', 'Usuário'];
 
   SignUpScreen({Key? key}) : super(key: key);
 
@@ -39,6 +41,31 @@ class SignUpScreen extends StatelessWidget {
                     return null;
                   },
                   onSaved: (name) => userLocal.name = name,
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                DropdownButtonFormField(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Selecione uma opção';
+                    }
+                    return null;
+                  },
+                  decoration: const InputDecoration(hintText: 'Cargo'),
+                  isDense: false,
+                  items: <String>['Administrador', 'Usuário']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(
+                        value,
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                    );
+                  }).toList(),
+                  onChanged: (String? value) {},
+                  onSaved: (type) => userLocal.type = type,
                 ),
                 const SizedBox(
                   height: 16,

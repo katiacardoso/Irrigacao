@@ -4,6 +4,7 @@ class UserLocal {
   String? email;
   String? password;
   String? confirmPassword;
+  String? type;
   
   UserLocal({
     this.id,
@@ -11,6 +12,7 @@ class UserLocal {
     this.email,
     this.password,
     this.confirmPassword,
+    this.type
   });
 
   //metodo para coverter algum objeto para uma estrutura de dados compativel
@@ -21,7 +23,8 @@ class UserLocal {
       'name': name,
       'email': email,
       'password': password,
-      'confirmPassword': confirmPassword
+      'confirmPassword': confirmPassword,
+      'type': type
     };
   }
 
@@ -32,6 +35,7 @@ class UserLocal {
         name: map['name'],
         email: map['email'],
         password: map['password'],
-        confirmPassword: map['confirmPassword']);
+        confirmPassword: map['confirmPassword'],
+        type: map['type']);
   }
 }

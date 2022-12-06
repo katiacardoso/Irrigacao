@@ -1,4 +1,4 @@
 bool emailValidator(String email){
-  final RegExp regex = RegExp("^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+([a-z0-9-]+).([a-z]{2,3})");
+  final RegExp regex = RegExp("/^[a-zA-Z0-9.!#%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-z-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*/");
   return regex.hasMatch(email);
 }
