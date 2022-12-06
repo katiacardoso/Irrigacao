@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../model/user/user_local.dart';
@@ -14,6 +15,9 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final CollectionReference users =
+        FirebaseFirestore.instance.collection('users');
+
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
@@ -138,6 +142,17 @@ class SignUpScreen extends StatelessWidget {
                         );
                         return;
                       }
+
+                      //add no firebase
+                      users.add({
+                            'name': userLocal.name,
+                            'email': userLocal.email,
+                            'type': userLocal.type
+                          })
+                          .then((value) => print("User Added"))
+                          .catchError(
+                              (error) => print("Failed to add user: $error"));
+
                       UserServices userServices = UserServices();
                       userServices.signUp(
                         userLocal,
