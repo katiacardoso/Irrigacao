@@ -1,12 +1,12 @@
-import 'package:app_flutter/cadastro_mudas.dart';
 import 'package:app_flutter/login/login_screen.dart';
-import 'package:app_flutter/model/doacao/cadastro_doacao.dart';
+import 'package:firebase_core/firebase_core.dart';
+
 //import 'package:bnb_flutter/login/login_screen.dart';
 //import 'package:bnb_flutter/login/signup_screen.dart';
 //import 'package:bnb_flutter/units/unit_screen.dart';
 //import 'package:bnb_flutter/utils/first_page.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 //import 'screen/home_screen.dart';
 //import 'units/unit_screen.dart';
 
@@ -31,14 +31,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      initialRoute: '/home', //primeira página a ser chamada
+      initialRoute: '/home',
+      //primeira página a ser chamada
       routes: {
-        //'/home': (context) => LoginScreen()
-        '/home': (context) => CadastrarDoacao(),
-        //'/home': (context) => const HomeScreen(),
+        '/home': (context) => LoginScreen()
+        //'/home': (context) => CadastrarDoacao(),
+        //'/home': (context) => const Home( title: 'Plantinha'),
         //'/unit': (context) => UnitScreen(),
         //'/login': (context) => LoginScreen(),
         //'/signUp':(context) => SignUpScreen(),

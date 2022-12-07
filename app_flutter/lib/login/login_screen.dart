@@ -1,7 +1,8 @@
 import 'package:app_flutter/model/doacao/cadastro_doacao.dart';
 import 'package:flutter/material.dart';
 
-import '../cadastro_mudas.dart';
+import '../model/mudas/cadastro_mudas.dart';
+import '../home/home.dart';
 import '../model/user/user_local.dart';
 import '../model/user/user_services.dart';
 import 'signup_screen.dart';
@@ -97,7 +98,7 @@ class LoginScreen extends StatelessWidget {
                                               CadastrarMudas()*/
 
                                         builder: (context) =>
-                                            CadastrarDoacao()
+                                            const Home(title: 'Plantinha')
                                       ));
                                 }, onFail: (e) {
                                   const Text('e');

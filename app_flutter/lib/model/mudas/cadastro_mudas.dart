@@ -1,30 +1,32 @@
-import 'package:app_flutter/model/doacao/doacao_services.dart';
+import 'package:app_flutter/model/mudas/mudas_services.dart';
+import 'package:app_flutter/model/mudas/user_plantas.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import 'doacao.dart';
+void main() => runApp(CadastrarMudas());
 
-void main() => runApp(CadastrarDoacao());
+class CadastrarMudas extends StatelessWidget {
+  // This widget is the root of your application.
 
-class CadastrarDoacao extends StatelessWidget {
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final Doacao doacaoLocal = Doacao();
+  Plantas mudaLocal = Plantas();
 
-  CadastrarDoacao({super.key});
+  CadastrarMudas({super.key});
 
   @override
   Widget build(BuildContext context) {
-    doacaoLocal.dataDoacao = DateTime.now();
 
-    final CollectionReference doacao =
-        FirebaseFirestore.instance.collection('Cadastro_doacao');
+    mudaLocal.data = DateTime.now();
+
+    final CollectionReference muda =
+    FirebaseFirestore.instance.collection('Cadastro_muda');
 
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        title: const Text('Cadastrar doacão'),
+        title: const Text('Cadastrar muda'),
         centerTitle: true,
         backgroundColor: Colors.green,
       ),
@@ -38,51 +40,50 @@ class CadastrarDoacao extends StatelessWidget {
               shrinkWrap: true,
               children: <Widget>[
                 TextFormField(
-                  decoration: const InputDecoration(hintText: 'Numero do lote'),
-                  validator: (numeroLote) {
-                    if (numeroLote!.isEmpty) {
+                  decoration: const InputDecoration(hintText: 'Nome comum'),
+                  validator: (nomeComum) {
+                    if (nomeComum!.isEmpty) {
                       return 'Campo obrigatório';
                     }
                     return null;
                   },
-                  onSaved: (numeroLote) => doacaoLocal.numeroLote = numeroLote,
+                  onSaved: (nomeComum) => mudaLocal.nomeComum = nomeComum,
                 ),
                 const SizedBox(
                   height: 16,
                 ),
                 TextFormField(
                   decoration:
-                      const InputDecoration(hintText: 'Local da doação'),
-                  validator: (localDoacao) {
-                    if (localDoacao!.isEmpty) {
+                      const InputDecoration(hintText: 'Nome científico'),
+                  validator: (nomeCientifico) {
+                    if (nomeCientifico!.isEmpty) {
                       return 'Campo obrigatório';
                     }
                     return null;
                   },
-                  onSaved: (localDoacao) =>
-                      doacaoLocal.localDoacao = localDoacao,
+                  onSaved: (nomeCientifico) =>
+                      mudaLocal.nomeCientifico = nomeCientifico,
                 ),
                 const SizedBox(
                   height: 16,
-                ),/*
+                ),
                 TextFormField(
-                  decoration: const InputDecoration(hintText: 'Data da doação'),
-                  keyboardType: TextInputType.datetime,
-                  validator: (dataDoacao) {
-                    if (dataDoacao!.isEmpty) {
+                  decoration: const InputDecoration(hintText: 'Quantidade'),
+                  validator: (quantidade) {
+                    if (quantidade!.isEmpty) {
                       return 'Campo obrigatório';
                     }
                     return null;
                   },
-                  onSaved: (dataDoacao) =>
-                      doacaoLocal.dataDoacao = DateTime.now(),
+                  onSaved: (quantidade) =>
+                      mudaLocal.quantidade = quantidade as int?,
                 ),
                 const SizedBox(
                   height: 16,
-                ),*/
+                ),
                 TextFormField(
                   decoration:
-                      const InputDecoration(hintText: 'Nome do determinador'),
+                      const InputDecoration(hintText: 'Nome determinador'),
                   validator: (nomeDeterminador) {
                     if (nomeDeterminador!.isEmpty) {
                       return 'Campo obrigatório';
@@ -90,7 +91,7 @@ class CadastrarDoacao extends StatelessWidget {
                     return null;
                   },
                   onSaved: (nomeDeterminador) =>
-                      doacaoLocal.nomeDeterminador = nomeDeterminador,
+                      mudaLocal.nomeDeterminador = nomeDeterminador,
                 ),
                 const SizedBox(
                   height: 16,
@@ -103,23 +104,24 @@ class CadastrarDoacao extends StatelessWidget {
                   onPressed: () {
                     formkey.currentState!.save();
 
-                    DoacaoServices doacaoServices = DoacaoServices();
-                    doacaoServices.addDoacao(doacaoLocal);
+                    PlantasServices plantaServices = PlantasServices();
+                    plantaServices.addPlantas(mudaLocal);
 
-                    doacao
+                    muda
                         .add({
-                          'id': doacaoLocal.idDoacao,
-                          'numeroLote': doacaoLocal.numeroLote,
-                          'localDoacao': doacaoLocal.localDoacao,
-                          'dataDoacao': doacaoLocal.dataDoacao,
-                          'nomeDeterminador': doacaoLocal.nomeDeterminador
+                          'idPlanta': mudaLocal.idPlanta,
+                          'nomeComum': mudaLocal.nomeComum,
+                          'nomeCientifico': mudaLocal.nomeCientifico,
+                          'data': mudaLocal.data,
+                          'quantidade': mudaLocal.quantidade,
+                          'nomeDeterminador': mudaLocal.nomeDeterminador
                         })
-                        .then((value) => print("Doacao Added"))
+                        .then((value) => print("Muda Added"))
                         .catchError(
-                            (error) => print("Failed to add doacao: $error"));
+                            (error) => print("Failed to add muda: $error"));
                   },
                   child: const Text(
-                    'Cadastrar doação',
+                    'Cadastrar muda',
                     style: TextStyle(
                       fontSize: 16,
                     ),
