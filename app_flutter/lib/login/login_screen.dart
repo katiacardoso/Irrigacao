@@ -1,7 +1,5 @@
-import 'package:app_flutter/model/doacao/cadastro_doacao.dart';
 import 'package:flutter/material.dart';
 
-import '../model/mudas/cadastro_mudas.dart';
 import '../home/home.dart';
 import '../model/user/user_local.dart';
 import '../model/user/user_services.dart';
@@ -53,7 +51,7 @@ class LoginScreen extends StatelessWidget {
                             onSaved: (value) => userLocal.email = value,
                             initialValue: userLocal.email,
                             decoration:
-                                const InputDecoration(hintText: 'Email...'),
+                                const InputDecoration(hintText: 'Email'),
                             validator: (value) {
                               if (value == null) {
                                 return 'Por favor, insira o email';
@@ -69,7 +67,7 @@ class LoginScreen extends StatelessWidget {
                             obscureText: true,
                             initialValue: userLocal.password,
                             decoration:
-                                const InputDecoration(hintText: 'Senha...'),
+                                const InputDecoration(hintText: 'Senha'),
                             validator: (value) {
                               if (value == null) {
                                 return 'Por favor, insira a senha';
@@ -97,9 +95,8 @@ class LoginScreen extends StatelessWidget {
                                           /*builder: (context) =>
                                               CadastrarMudas()*/
 
-                                        builder: (context) =>
-                                            const Home(title: 'Plantinha')
-                                      ));
+                                          builder: (context) =>
+                                              const Home(title: 'Plantinha')));
                                 }, onFail: (e) {
                                   const Text('e');
                                 });

@@ -1,13 +1,13 @@
-class Plantas {
-  String? idPlanta;
+class Muda {
+  String? idMuda;
   String? nomeComum;
   String? nomeCientifico;
-  int? quantidade;
+  String? quantidade;
   DateTime? data;
   String? nomeDeterminador;
 
-  Plantas({
-    this.idPlanta,
+  Muda({
+    this.idMuda,
     this.nomeComum,
     this.nomeCientifico,
     this.quantidade,
@@ -17,7 +17,7 @@ class Plantas {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'idPlanta': idPlanta,
+      'idPlanta': idMuda,
       'nomeComum': nomeComum,
       'nomeCientifico': nomeCientifico,
       'quantidade': quantidade,
@@ -27,9 +27,9 @@ class Plantas {
   }
 
   //métod para converter forato Json para objeto
-  factory Plantas.fromMap(Map<String, dynamic> map) {
-    return Plantas(
-        idPlanta: map['idPlanta'],
+  factory Muda.fromMap(Map<String, dynamic> map) {
+    return Muda(
+        idMuda: map['idMuda'],
         nomeComum: map['nomeComum'],
         nomeCientifico: map['nomeCientifico'],
         quantidade: map['quantidade'],

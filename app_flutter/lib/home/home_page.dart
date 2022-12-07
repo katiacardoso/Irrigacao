@@ -1,24 +1,22 @@
-
-import 'package:app_flutter/model/mudas/cadastro_mudas.dart';
+import 'package:app_flutter/model/lote/cadastro_lote.dart';
+import 'package:app_flutter/model/mudas/cadastro_muda.dart';
 import 'package:flutter/material.dart';
 
 import '../items_dashboard.dart';
 import '../model/doacao/cadastro_doacao.dart';
 
-
 class HomePage extends StatefulWidget {
   final String title;
+
   const HomePage(this.title, {Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return HomePageState();
   }
 }
 
-class HomePageState extends State<HomePage>
-    with AutomaticKeepAliveClientMixin {
-  int _count = 0;
-
+class HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
 
@@ -147,7 +145,13 @@ class HomePageState extends State<HomePage>
           builder: (context) => CadastrarDoacao(),
         ),
       );
-    }else if (index == 1) {
+    } else if (index == 1) {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => CadastrarLote(),
+        ),
+      );
+    } else if (index == 2) {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) => CadastrarMudas(),

@@ -1,9 +1,8 @@
-
-import 'package:app_flutter/model/mudas/cadastro_mudas.dart';
-import 'package:app_flutter/home/home_page.dart';
 import 'package:app_flutter/model/doacao/cadastro_doacao.dart';
+import 'package:app_flutter/model/mudas/cadastro_muda.dart';
 import 'package:flutter/material.dart';
 
+import '../model/lote/cadastro_lote.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key, required this.title}) : super(key: key);
@@ -17,7 +16,8 @@ class Home extends StatefulWidget {
 
 class HomeState extends State<Home> {
   //final List<String> _list = ['Administração', 'Financeiro', 'Recicláveis'];
-  final List<String> _list = ['Mudas', 'Doações'];
+  final List<String> _list = ['Mudas', 'Lotes', 'Doações'];
+
   //final List<String> _list = ['Administração'];
 
   @override
@@ -40,6 +40,7 @@ class HomeState extends State<Home> {
         body: TabBarView(
           children: <Widget>[
             CadastrarMudas(),
+            CadastrarLote(),
             //FinancialManagementPage('Gerência Financeira'),
             CadastrarDoacao(),
           ],

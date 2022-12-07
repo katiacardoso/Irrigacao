@@ -1,14 +1,15 @@
-import 'package:app_flutter/model/mudas/user_plantas.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
+
+import 'muda.dart';
 
 class PlantasServices {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
 //método para persistir dados no firebase
-  addPlantas(Plantas plantas) {
-    _firestore.collection('plantas').add(
-          plantas.toMap(),
+  addPlantas(Muda muda) {
+    _firestore.collection('Cadastro_muda').add(
+          muda.toMap(),
         );
   }
 
@@ -20,15 +21,15 @@ class PlantasServices {
     return Future.value(data!['area']);
   }
 
-  ///método para obtenção de lista das mudas
+  ///método para obtenção de lista das muda
   Stream<QuerySnapshot> getPlantasList() {
-    CollectionReference plantasRef = _firestore.collection('plantas');
-    return plantasRef.snapshots();
+    CollectionReference mudaRef = _firestore.collection('muda');
+    return mudaRef.snapshots();
   }
 
 //método para atualizar dados no firebase
-  updatePlantas(
-    String idPlanta,
+  updateMuda(
+    String idMuda,
     String nomeComum,
     String nomeCientifico,
     int quantidade,
@@ -36,9 +37,9 @@ class PlantasServices {
     String nomeDeterminador,
   ) {
     DocumentReference documentReference =
-        _firestore.collection('plantas').doc(idPlanta);
+        _firestore.collection('Cadastro_muda').doc(idMuda);
     Map<String, dynamic> dado = <String, dynamic>{
-      'idPlanta': idPlanta,
+      'idPlanta': idMuda,
       'nomeComum': nomeComum,
       'nomeCientifico': nomeCientifico,
       'quantidade': quantidade,
@@ -48,28 +49,25 @@ class PlantasServices {
     documentReference
         .update(dado)
         .whenComplete(
-          () => debugPrint(
-              "Dados do $idPlanta atualizado com sucesso!!!"),
+          () => debugPrint("Dados do $idMuda atualizado com sucesso!!!"),
         )
         .catchError(
-          (e) => debugPrint(
-              "Erro ao atualizar dados do $idPlanta -> $e!"),
+          (e) => debugPrint("Erro ao atualizar dados do $idMuda -> $e!"),
         );
     ;
   }
 
 //método para deletar dados no firebase
-  deletePlantas(String idPlanta) {
+  deletePlantas(String idMuda) {
     DocumentReference documentReference =
-        _firestore.collection('lote').doc(idPlanta);
+        _firestore.collection('lote').doc(idMuda);
     documentReference
         .delete()
         .whenComplete(
-          () => debugPrint("Dados do $idPlanta com sucesso!!!"),
+          () => debugPrint("Dados do $idMuda com sucesso!!!"),
         )
         .catchError(
-          (e) =>
-              debugPrint("Erro ao deletar dados do $idPlanta -> $e!"),
+          (e) => debugPrint("Erro ao deletar dados do $idMuda -> $e!"),
         );
   }
 }

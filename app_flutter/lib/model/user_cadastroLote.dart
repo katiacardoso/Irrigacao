@@ -2,7 +2,7 @@ class Lotes{
 
 final int numeroLote;
 final String nomeLote;
-final String dataMudas;
+late final String dataMudas;
 final String dataReplantio;
 final String reponsavelPlantio;
 final String reponsavelReplantio;

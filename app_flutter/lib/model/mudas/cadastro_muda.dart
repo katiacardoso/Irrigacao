@@ -1,5 +1,5 @@
-import 'package:app_flutter/model/mudas/mudas_services.dart';
-import 'package:app_flutter/model/mudas/user_plantas.dart';
+import 'package:app_flutter/model/mudas/muda.dart';
+import 'package:app_flutter/model/mudas/muda_services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -11,17 +11,16 @@ class CadastrarMudas extends StatelessWidget {
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
-  Plantas mudaLocal = Plantas();
+  Muda mudaLocal = Muda();
 
   CadastrarMudas({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     mudaLocal.data = DateTime.now();
 
     final CollectionReference muda =
-    FirebaseFirestore.instance.collection('Cadastro_muda');
+        FirebaseFirestore.instance.collection('Cadastro_muda');
 
     return Scaffold(
       key: scaffoldKey,
@@ -75,8 +74,7 @@ class CadastrarMudas extends StatelessWidget {
                     }
                     return null;
                   },
-                  onSaved: (quantidade) =>
-                      mudaLocal.quantidade = quantidade as int?,
+                  onSaved: (quantidade) => mudaLocal.quantidade = quantidade,
                 ),
                 const SizedBox(
                   height: 16,
@@ -109,7 +107,7 @@ class CadastrarMudas extends StatelessWidget {
 
                     muda
                         .add({
-                          'idPlanta': mudaLocal.idPlanta,
+                          'idPlanta': mudaLocal.idMuda,
                           'nomeComum': mudaLocal.nomeComum,
                           'nomeCientifico': mudaLocal.nomeCientifico,
                           'data': mudaLocal.data,
