@@ -14,12 +14,14 @@ class CadastrarMudas extends StatelessWidget {
   final TextEditingController _controladorNomeDeterminador =
       TextEditingController();
 
+  CadastrarMudas({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Cadastrando mudas'),
+          title: const Text('Cadastrando mudas'),
         ),
         body: Column(
           children: <Widget>[
@@ -27,14 +29,14 @@ class CadastrarMudas extends StatelessWidget {
               padding: const EdgeInsets.only(top: 16.0),
               child: TextField(
                   controller: _controladorNomeComum,
-                  decoration: InputDecoration(labelText: 'Nome Comum:'),
+                  decoration: const InputDecoration(labelText: 'Nome Comum:'),
                   keyboardType: TextInputType.text),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 16.0),
               child: TextField(
                   controller: _controladorNomeCientifico,
-                  decoration: InputDecoration(labelText: 'Nome Cienfico:'),
+                  decoration: const InputDecoration(labelText: 'Nome Cienfico:'),
                   keyboardType: TextInputType.text),
             ),
             Padding(
@@ -42,27 +44,27 @@ class CadastrarMudas extends StatelessWidget {
               child: TextField(
                   controller: _controladorQuantidade,
                   decoration:
-                      InputDecoration(labelText: 'Quantidade de mudas:'),
+                      const InputDecoration(labelText: 'Quantidade de mudas:'),
                   keyboardType: TextInputType.number),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 16.0),
               child: TextField(
                   controller: _controladorData,
-                  decoration: InputDecoration(labelText: 'Data da plantação:'),
+                  decoration: const InputDecoration(labelText: 'Data da plantação:'),
                   keyboardType: TextInputType.datetime),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 16.0),
               child: TextField(
                   controller: _controladorNomeDeterminador,
-                  decoration: InputDecoration(labelText: 'Nome Determinador:'),
+                  decoration: const InputDecoration(labelText: 'Nome Determinador:'),
                   keyboardType: TextInputType.text),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 16.0),
               child: ElevatedButton(
-                child: Text('Cadastrar'),
+                child: const Text('Cadastrar'),
                 onPressed: () {
                   final String nomeComum = _controladorNomeComum.text;
                   final String nomeCientifico = _controladorNomeCientifico.text;

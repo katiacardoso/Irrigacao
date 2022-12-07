@@ -1,5 +1,6 @@
 import 'package:app_flutter/cadastro_mudas.dart';
 import 'package:app_flutter/login/login_screen.dart';
+import 'package:app_flutter/model/doacao/cadastro_doacao.dart';
 //import 'package:bnb_flutter/login/login_screen.dart';
 //import 'package:bnb_flutter/login/signup_screen.dart';
 //import 'package:bnb_flutter/units/unit_screen.dart';
@@ -35,7 +36,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/home', //primeira página a ser chamada
       routes: {
-        '/home': (context) => LoginScreen()
+        //'/home': (context) => LoginScreen()
+        '/home': (context) => CadastrarDoacao(),
         //'/home': (context) => const HomeScreen(),
         //'/unit': (context) => UnitScreen(),
         //'/login': (context) => LoginScreen(),

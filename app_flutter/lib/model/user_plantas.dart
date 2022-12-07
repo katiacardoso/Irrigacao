@@ -8,13 +8,13 @@ class Plantas {
   Plantas(
     this.nomeComum,
     this.nomeCientifico,
-     this.quantidade,
+    this.quantidade,
     this.data,
-    this. nomeDeterminador,
+    this.nomeDeterminador,
   );
 
   @override
   String toString() {
     return 'Plantas{nome: $nomeComum, nomeCientifico: $nomeCientifico, quantidade: $quantidade, data: $data, nomeDeterminador: $nomeDeterminador}';
-  }  
+  }
 }

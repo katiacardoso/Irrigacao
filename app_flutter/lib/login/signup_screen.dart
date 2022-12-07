@@ -15,8 +15,11 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final CollectionReference admin =
+        FirebaseFirestore.instance.collection('Cadastro_admin');
+
     final CollectionReference users =
-        FirebaseFirestore.instance.collection('users');
+        FirebaseFirestore.instance.collection('Cadastro_user');
 
     return Scaffold(
       key: scaffoldKey,
@@ -143,16 +146,6 @@ class SignUpScreen extends StatelessWidget {
                         return;
                       }
 
-                      //add no firebase
-                      users.add({
-                            'name': userLocal.name,
-                            'email': userLocal.email,
-                            'type': userLocal.type
-                          })
-                          .then((value) => print("User Added"))
-                          .catchError(
-                              (error) => print("Failed to add user: $error"));
-
                       UserServices userServices = UserServices();
                       userServices.signUp(
                         userLocal,
@@ -171,6 +164,28 @@ class SignUpScreen extends StatelessWidget {
                           );
                         },
                       );
+
+                      if (userLocal.type == 'Administrador') {
+                        admin
+                            .add({
+                          'id': userLocal.id,
+                          'name': userLocal.name,
+                          'email': userLocal.email
+                        })
+                            .then((value) => print("Admin Added"))
+                            .catchError((error) =>
+                            print("Failed to add admin: $error"));
+                      } else {
+                        users
+                            .add({
+                          'id': userLocal.id,
+                          'name': userLocal.name,
+                          'email': userLocal.email
+                        })
+                            .then((value) => print("User Added"))
+                            .catchError(
+                                (error) => print("Failed to add user: $error"));
+                      }
                     }
                   },
                   child: const Text(

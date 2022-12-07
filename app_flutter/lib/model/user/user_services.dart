@@ -11,6 +11,7 @@ FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
 class UserServices {
   UserLocal? userLocal;
+
   //metodo para realizar a autenticacao no firebase com email e senha
   Future<void> signIn(
     UserLocal userLocal, {
@@ -37,7 +38,7 @@ class UserServices {
               email: userLocal.email!, password: userLocal.password!))
           .user;
       this.userLocal = userLocal;
-      this.userLocal!.id = user!.uid;
+      this.userLocal?.id = user!.uid;
       onSucess!();
     } catch (e) {
       onFail!(e);

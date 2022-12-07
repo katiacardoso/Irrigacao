@@ -1,10 +1,5 @@
-import 'package:app_flutter/main.dart';
-//import 'package:bnb_flutter/dashboard/items_dashboard.dart';
-//import 'package:bnb_flutter/screen/home_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:app_flutter/model/doacao/cadastro_doacao.dart';
 import 'package:flutter/material.dart';
-//import 'package:bnb_flutter/models/unit_service.dart';
-import 'dart:html';
 
 import '../cadastro_mudas.dart';
 import '../model/user/user_local.dart';
@@ -15,6 +10,7 @@ class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   UserLocal userLocal = UserLocal();
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -97,8 +93,12 @@ class LoginScreen extends StatelessWidget {
                                 _userServices.signIn(userLocal, onSucess: () {
                                   Navigator.of(context).pushReplacement(
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              CadastrarMudas()));
+                                          /*builder: (context) =>
+                                              CadastrarMudas()*/
+
+                                        builder: (context) =>
+                                            CadastrarDoacao()
+                                      ));
                                 }, onFail: (e) {
                                   const Text('e');
                                 });
